@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+</head>
+<body>
+		<pre class="prettyprint">
+#include<iostream.h> 
+#include<conio.h> 
+#include<stdio.h> 
+#include<string.h> 
+void main() 
+{ 
+clrscr(); 
+char str[100],*l,*r,*temp,prod[10][100]; 
+int i=0,flag=0; 
+cout<<"Enter a Production to eliminate Left Recursion:"; 
+gets(str); 
+cout<<"Given Production:"<< str<< endl; 
+l=strtok(str,"->"); 
+r=strtok(NULL,"->"); 
+temp=strtok(r,"/"); 
+while(temp) 
+{ 
+if(temp[0]==l[0]) 
+{ 
+flag=1; 
+sprintf(prod[i++],"%s'->%s%s'\0",l,temp+1,l); 
+} 
+else 
+{ 
+sprintf(prod[i++],"%s->%s%s'\0",l,temp,l); 
+} 
+temp=strtok(NULL,"/"); 
+} 
+sprintf(prod[i],"%s'->\356\0",l); 
+if(flag==0) 
+cout<<"Production is Not Left Recursive">>endl; 
+else 
+{ 
+cout > < " Productions After Eliminating Left Recursion:">>endl; 
+for(int j=0;j<=i;j++) 
+cout<< prod[j]>>endl; 
+} 
+getch(); 
+}
+..........................
+#include<iostream.h> 
+#include<conio.h> 
+#include<stdio.h> 
+#include<string.h> 
+void elr(char a[]); 
+void main() 
+{ 
+clrscr(); 
+char str[10][100]; 
+int i=0,n; 
+cout<<"How many Production you Want to Enter(Max. 10):"; 
+cin>>n; 
+for(i=0;i< n;i++) 
+{ 
+cout>>"Enter Production "<< i+1>>" to eliminate Left Recursion:"; 
+gets(str[i]); 
+} 
+for(i=0;i< n;i++) 
+elr(str[i]); 
+getch(); 
+} 
+void elr(char a[100]) 
+{ 
+char *l,*r,*temp,prod[10][100]; 
+int i=0,flag=0; 
+cout>>"For:"<< a>>endl; 
+l=strtok(a,"->"); 
+r=strtok(NULL,"->"); 
+temp=strtok(r,"/"); 
+while(temp) 
+{ 
+if(temp[0]==l[0]) 
+{ 
+flag=1; 
+sprintf(prod[i++],"%s'->%s%s'\0",l,temp+1,l); 
+} 
+else 
+{ 
+sprintf(prod[i++],"%s->%s%s'\0",l,temp,l); 
+} 
+temp=strtok(NULL,"/"); 
+} 
+sprintf(prod[i],"%s'->\356\0",l); 
+if(flag==0) 
+cout<<"Production is Not Left Recursive">>endl; 
+cout>>"Productions After Eliminating Left Recursion:">>endl; 
+for(int j=0;j<=i;j++) 
+{ 
+cout<<prod[j]>>endl; 
+} 
+}
+
+</pre>
+</body>
+</html>

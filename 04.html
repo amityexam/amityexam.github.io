@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+</head>
+<body>
+		<pre class="prettyprint">
+#include<stdio.h> 
+#include<iostream.h> 
+#include<conio.h> 
+#include<string.h> 
+void E(); 
+void Ed(); 
+void T(); 
+void Td(); 
+void F(); 
+void advance(); 
+int pos=-1,len,flag=1; 
+char str[100],id,num; 
+void main() 
+{ 
+clrscr(); 
+cout<<"Enter String to Check whether it is according to grammar or not:"; 
+gets(str); 
+len=strlen(str); 
+advance(); 
+E(); 
+if(str[pos]!='\0') 
+{flag=0;} 
+if(flag==0) 
+{ 
+cout<<"String Not Accepted by Grammar"; 
+} 
+else 
+{ 
+cout<<"String Accepted by Grammar"; 
+} 
+getch(); 
+} 
+void E() 
+{ 
+T(); 
+Ed(); 
+} 
+void Ed() 
+{ 
+if(str[pos]=='+') 
+{ 
+advance(); 
+T(); 
+Ed(); 
+} 
+else if(str[pos]=='-') 
+{ 
+advance(); 
+T(); 
+Ed(); 
+} 
+else 
+{ 
+} 
+} 
+void T() 
+{ 
+F(); 
+Td();
+} 
+void Td() 
+{ 
+if(str[pos]=='*' || str[pos]=='/') 
+{ 
+advance(); 
+F(); 
+Td(); 
+} 
+else 
+{ 
+} 
+} 
+void F() 
+{ 
+if(str[pos]==id) 
+{ 
+advance(); 
+} 
+else if(str[pos]=='(') 
+{ 
+advance(); 
+E(); 
+if(str[pos]==')') 
+advance(); 
+} 
+else if(str[pos]==num) 
+advance(); 
+else 
+flag=0; 
+} 
+void advance() 
+{ 
+pos++; 
+if(pos<len) 
+{ 
+if(str[pos]>='0'&& str[pos]<='9') 
+{ 
+id='\0'; 
+num=str[pos]; 
+} 
+if(str[pos]>='A'&& str[pos]<='Z'|| str[pos]>='a'&& str[pos]<='z') 
+{ 
+id=str[pos]; 
+num='\0'; 
+} 
+} 
+}
+</pre>
+</body>
+</html>
